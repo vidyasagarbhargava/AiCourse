@@ -102,7 +102,18 @@ def normal(x, mean, std):
     exponent = ((x-mean)/std)**2
     exponent *= -0.5
     output = np.exp(exponent)/(std*np.sqrt(2*np.pi))
-    return output    
+    return output
+
+#10: Converts an RGB image to Grayscale
+def rgb2gray(rgb_img):
+    rows, columns,_ = np.shape(rgb_img)
+    gray_img = np.zeros((rows, columns))
+    # computing grayscale value at each pixel
+    for i in range(rows):
+        for j in range(columns):
+            R, G, B = rgb_img[i, j, :]
+            gray_img[i, j] = (0.3*R) + (0.59*G) + (0.11*B)
+    return gray_img
 
 
 # Visualization Code
