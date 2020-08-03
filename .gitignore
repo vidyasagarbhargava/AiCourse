@@ -4,5 +4,3 @@
 *.DS_Store
 .DS_Store
 *flights.txt
-*__pycache__/
-*__pycache__*
