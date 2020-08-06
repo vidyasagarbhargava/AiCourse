@@ -29,6 +29,15 @@ def get_regression_data(m=20):
     # print(X.shape, Y.shape)
     return X, Y #returns X (the input) and Y (labels)
 
+def sample_polynomial_data(m=20, order=3, _range=1):
+    coeffs = np.random.randn(order + 1) # initialise random coefficients for each order of the input + a constant offset
+    # print(Polynomial(coeffs))
+    poly_func = np.vectorize(np.polynomial.Polynomial(coeffs)) # 
+    X = np.random.randn(m)
+    X = np.random.uniform(low=-_range, high=_range, size=(m,))
+    Y = poly_func(X)
+    return X, Y, coeffs #returns X (the input), Y (labels) and coefficients for each power
+
 def show_regression_data(X, Y):
     plt.figure()
     plt.scatter(X, Y, c='r')
@@ -36,11 +45,20 @@ def show_regression_data(X, Y):
     plt.ylabel('Y')
     plt.show()
 
-def visualise_regression_data(X, Y, y_hat=None):
+def visualise_regression_data(X, Y, H=None):
+# def visualise_regression_data(X, Y, y_hat=None):
+    ordered_idxs = np.argsort(X)
+    X = X[ordered_idxs]
+    Y = Y[ordered_idxs]
+    # y_hat = y_hat[ordered_idxs]
     plt.figure()
     plt.scatter(X, Y, c='r', label='Label')
-    if y_hat is not None:
-        plt.plot(X, y_hat, c='b', label='Hypothesis', marker='x')
+    if H is not None:
+        domain = np.linspace(min(X), max(X))
+        y_hat = H(domain)
+        plt.plot(domain, y_hat, label='Hypothesis')
+    # if y_hat is not None:
+    #     plt.plot(X, y_hat, c='b', label='Hypothesis', marker='x')
     plt.legend()
     plt.xlabel('X')
     plt.ylabel('Y')
