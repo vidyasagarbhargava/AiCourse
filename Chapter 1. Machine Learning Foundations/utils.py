@@ -36,11 +36,20 @@ def show_regression_data(X, Y):
     plt.ylabel('Y')
     plt.show()
 
-def visualise_regression_data(X, Y, y_hat=None):
+def visualise_regression_data(X, Y, H=None):
+# def visualise_regression_data(X, Y, y_hat=None):
+    ordered_idxs = np.argsort(X)
+    X = X[ordered_idxs]
+    Y = Y[ordered_idxs]
+    # y_hat = y_hat[ordered_idxs]
     plt.figure()
     plt.scatter(X, Y, c='r', label='Label')
-    if y_hat is not None:
-        plt.plot(X, y_hat, c='b', label='Hypothesis', marker='x')
+    if H is not None:
+        domain = np.linspace(min(X), max(X))
+        y_hat = H(domain)
+        plt.plot(domain, y_hat, label='Hypothesis')
+    # if y_hat is not None:
+    #     plt.plot(X, y_hat, c='b', label='Hypothesis', marker='x')
     plt.legend()
     plt.xlabel('X')
     plt.ylabel('Y')
