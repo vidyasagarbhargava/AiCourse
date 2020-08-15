@@ -38,7 +38,7 @@ def show_regression_data(X, Y):
 
 def visualise_regression_data(X, Y, H=None):
 # def visualise_regression_data(X, Y, y_hat=None):
-    ordered_idxs = np.argsort(X)
+    ordered_idxs = np.argsort(X, axis=0)
     X = X[ordered_idxs]
     Y = Y[ordered_idxs]
     # y_hat = y_hat[ordered_idxs]
