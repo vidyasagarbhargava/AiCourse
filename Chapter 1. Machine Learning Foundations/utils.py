@@ -64,7 +64,7 @@ def visualise_predictions(H, X, Y=None, n=50):
     meshgrid = np.zeros((n, n))
     for x1_idx, x1 in enumerate(np.linspace(xmin, xmax, n)): # for each column
         for x2_idx, x2 in enumerate(np.linspace(ymin, ymax, n)): # for each row
-            h = H(np.array([[x1, x2]])).astype(int)[0]
+            h = H(np.array([[x1, x2]]))[0]
             meshgrid[n-1-x2_idx, x1_idx] = h # axis 0 is the vertical direction starting from the top and increasing downward
     if Y is not None:
         for idx in list(set(Y)):
@@ -72,6 +72,7 @@ def visualise_predictions(H, X, Y=None, n=50):
     else:
         plt.scatter(X[:,0], X[:, 1])
     plt.imshow(meshgrid, extent=(xmin, xmax, ymin, ymax), cmap='winter')
+    plt.show()
 
 
 def show_data(X, Y, predictions=None):
