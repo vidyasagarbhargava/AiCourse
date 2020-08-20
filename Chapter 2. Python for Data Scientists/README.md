@@ -1,3 +1,3 @@
 # Full-Stack-AI-Summer-School
 
-leggo
+Let's do this
