@@ -236,4 +236,24 @@ def visualize_normal_interval(interval_floor, interval_ceil, normal_func, mean, 
     	showlegend=False
 	)
 	fig.show()
+
+#8:
+def visualize_two_tail(critical_value, normal_func, bw=0.1):
+	# Determined
+	x_true = np.linspace(-4, 4, 1000)
+	f_true = normal_func(x_true)
+	bound_mag = 4
 	
+
+	fig = go.Figure()
+	fig = add_hist_approx(fig, -bound_mag, -critical_value, normal_func, bw)
+	fig = add_hist_approx(fig, critical_value, bound_mag, normal_func, bw)
+	fig.add_trace(go.Scatter(x=x_true, y=f_true, marker_color="black"))
+	fig.update_layout(
+    	title_text='Height Normal Distribution', # title of plot
+    	xaxis_title_text='x', # xaxis label
+    	yaxis_title_text='Probability Density', # yaxis label
+    	showlegend=False
+	)
+	fig.show()
+
