@@ -1,3 +1,8 @@
 *node_modules*
 *.ipynb_checkpoints/
 *pagila/
+*.DS_Store
+.DS_Store
+*flights.txt
+*Beijing\ PM2_5\ from\ 2010\ to\ 2017.csv
+**Beijing PM2_5 from 2010 to 2017.csv
