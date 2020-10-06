@@ -11,7 +11,7 @@ The intro notebook will have the following (reduced) skeleton:
 
 1. what is facebook prophet
   - pros and cons
-  - basic implementation (including converging forecasts)
-  - seasonality
-  - fourier order of fit
-  - Model deployment, management and evaluation (includes model saving and loading too)
+2. basic implementation (including converging forecasts)
+3. seasonality
+4. fourier order of fit
+5. Model deployment, management and evaluation (includes model saving and loading too)
