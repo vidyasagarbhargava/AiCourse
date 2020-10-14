@@ -95,11 +95,3 @@ def show(batch, pred_bndbox=None):
         pred_bndbox = unpack_bndbox(pred_bndbox, img)
         draw.rectangle(pred_bndbox, outline=1000)
     img.show()
-
-
-'''
-dset = S40dataset()
-
-
-show(batch)
-'''
