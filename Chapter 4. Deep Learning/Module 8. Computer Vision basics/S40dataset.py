@@ -64,6 +64,7 @@ class S40dataset():
     def __len__(self):
         return len(self.img_names)
 
+
 def unpack_bndbox(bndbox, img):
     bndbox = list(bndbox[0])
     x, y, w, h = tuple(bndbox)
@@ -95,3 +96,10 @@ def show(batch, pred_bndbox=None):
         pred_bndbox = unpack_bndbox(pred_bndbox, img)
         draw.rectangle(pred_bndbox, outline=1000)
     img.show()
+    
+if __name__ == '__main__':
+    from torchvision import transforms
+    t = transforms.ToTensor()
+    s40 = S40dataset(transform=t)
+    ex = s40[0]
+    show(s40)
