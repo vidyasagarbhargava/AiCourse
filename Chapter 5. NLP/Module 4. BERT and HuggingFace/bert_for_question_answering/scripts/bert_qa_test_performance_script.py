@@ -1,3 +1,4 @@
+import json
 import torch
 from transformers import BertTokenizer
 from modules_solutions.preprocess_dataset import DatasetEncoder
@@ -5,11 +6,12 @@ from modules_solutions.prediction_loop import predict
 from modules_solutions.scores import exact_match_rate, f1_score
 
 if __name__ == '__main__':
-    tokenizerr = BertTokenizer.from_pretrained("bert-base-cased", do_lower_case=False)
-    import json
-    with open("../data/SQuAD/dev-v1.1-small.json", "r") as f:
+    tokenizer = BertTokenizer.from_pretrained("bert-base-cased", do_lower_case=False)
+    # NOTE: dev-v1.1-small-subset.json should only be used to test the code works. When doing the actual scoring,
+    # the full dev-v1.1.json should be used instead.
+    with open("../data/dev-v1.1-small-subset.json", "r") as f:
         dev = json.load(f)
-    tok_enc = DatasetEncoder.from_dict_of_paragraphs(tokenizerr, dev)
+    tok_enc = DatasetEncoder.from_dict_of_paragraphs(tokenizer, dev)
     input_ids, token_type_ids, attention_masks, start_positions, end_positions, dropped_samples = \
         tok_enc.tokenize_and_encode(
             max_len=384, log_interval=1000, start_end_positions_as_tensors=False, with_answers=True
