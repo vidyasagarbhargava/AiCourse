@@ -1,8 +1,8 @@
 import torch
 from transformers import BertTokenizer
-from modules.preprocess_dataset import DatasetEncoder
-from modules.prediction_loop import predict
-from modules.scores import exact_match_rate, f1_score
+from modules_solutions.preprocess_dataset import DatasetEncoder
+from modules_solutions.prediction_loop import predict
+from modules_solutions.scores import exact_match_rate, f1_score
 
 if __name__ == '__main__':
     tokenizerr = BertTokenizer.from_pretrained("bert-base-cased", do_lower_case=False)

@@ -1,6 +1,6 @@
 from transformers import BertTokenizer, BertForQuestionAnswering, AdamW
-from modules.preprocess_dataset import DatasetEncoder
-from modules.fine_tuning import fine_tune_train_and_eval
+from modules_solutions.preprocess_dataset import DatasetEncoder
+from modules_solutions.fine_tuning import fine_tune_train_and_eval
 
 if __name__ == '__main__':
     tokenizerr = BertTokenizer.from_pretrained("bert-base-cased", do_lower_case=False)

@@ -1,10 +1,10 @@
 import json
 import torch
 from transformers import BertTokenizer, BertForQuestionAnswering, AdamW
-from modules.preprocess_dataset import DatasetEncoder
-from modules.fine_tuning import fine_tune_train_and_eval
-from modules.prediction_loop import predict
-from modules.scores import exact_match_rate, f1_score
+from modules_solutions.preprocess_dataset import DatasetEncoder
+from modules_solutions.fine_tuning import fine_tune_train_and_eval
+from modules_solutions.prediction_loop import predict
+from modules_solutions.scores import exact_match_rate, f1_score
 
 tokenizer = BertTokenizer.from_pretrained("bert-base-cased", do_lower_case=False)
 with open("/content/drive/My Drive/Colab Notebooks/train-v1.1.json", "r") as f:
