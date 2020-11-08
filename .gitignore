@@ -16,4 +16,6 @@ Chapter 4. Deep Learning/Module 3. Making Custom Datasets/S40-data/images/
 *__pycache__
 *.idea/
 Chapter\ 5.\ NLP/Module\ 4.\ BERT\ and\ HuggingFace/bert_for_question_answering/models/
+*venv
+
 
