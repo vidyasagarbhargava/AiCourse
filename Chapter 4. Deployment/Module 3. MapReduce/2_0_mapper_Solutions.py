@@ -13,3 +13,7 @@ import sys
 #                 ipsum...? 1
 #                 i 1
 #                 etc.
+for text_string in sys.stdin:
+    text_string = text_string.lower().split()
+    for word in text_string:
+        print("{}\t{}".format(word, 1))

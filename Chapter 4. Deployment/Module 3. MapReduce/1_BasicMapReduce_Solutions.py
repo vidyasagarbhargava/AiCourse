@@ -7,7 +7,11 @@ GUTENBERG_DIR = "../DATA/gutenberg/"
 gutenberg_books = []
 # ## Load the books into gutenberg_books
 # You may need to declare the file encodings as 'utf-8'
-
+for filename in os.listdir(GUTENBERG_DIR):
+    if filename.endswith(".txt"):
+        filepath = os.path.join(GUTENBERG_DIR, filename)
+        with open(filepath, "r", encoding="utf-8") as f:
+            gutenberg_books.append(f.read())
 
 # %%
 print(len(gutenberg_books))
@@ -24,7 +28,12 @@ print(len(gutenberg_books))
 
 
 def map(books: str):
-    pass
+    words = books.lower().split()
+    map_list = []
+    for word in words:
+        map_list.append((word, 1))
+
+    return map_list
 
 
 # Can you think of how we could augment our pre-processing?
@@ -38,7 +47,15 @@ print(mapped[:10])
 
 
 def shuffle(list_of_tuples):
-    pass
+    sorted_tuples = sorted(list_of_tuples, key=lambda x: x[0])
+    shuffled_output = {}
+    for key, group in groupby(sorted_tuples, key=lambda x: x[0]):
+        if key not in shuffled_output:
+            shuffled_output[key] = []
+        for value in group:
+            shuffled_output[key].append(value[1])
+
+    return shuffled_output
 
 
 shuffled = shuffle(mapped)
@@ -50,7 +67,11 @@ print(shuffled["blue"])
 
 
 def reduce(shuffled_output):
-    pass
+    reduced_output = {}
+    for key, value in shuffled_output.items():
+        reduced_output[key] = sum(value)
+
+    return reduced_output
 
 
 reduced = reduce(shuffled)
