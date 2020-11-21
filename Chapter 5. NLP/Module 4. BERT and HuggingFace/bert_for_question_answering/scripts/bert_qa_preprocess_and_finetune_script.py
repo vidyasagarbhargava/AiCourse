@@ -7,7 +7,7 @@ if __name__ == '__main__':
     tokenizer = BertTokenizer.from_pretrained("bert-base-cased", do_lower_case=False)
     # NOTE: train-v1.1-small-subset.json should only be used to test the code works. When doing the actual training,
     # the full train-v1.1.json should be used instead.
-    with open("../data/train-v1.1-small-subset.json", "r") as f:
+    with open("data/train-v1.1-small-subset.json", "r") as f:
         train = json.load(f)
     tok_enc = DatasetEncoder.from_dict_of_paragraphs(tokenizer, train)
     input_ids, token_type_ids, attention_masks, start_positions, end_positions, dropped_samples = \
@@ -40,6 +40,6 @@ if __name__ == '__main__':
         train_ratio=0.9,
         training_epochs=3,
         lr_scheduler_warmup_steps=0,
-        save_model_path="../models/trained_model.pt",
-        save_stats_dict_path="../models/statistics.json"
+        save_model_path="models/trained_model.pt",
+        save_stats_dict_path="models/statistics.json"
     )

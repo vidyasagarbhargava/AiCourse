@@ -28,7 +28,7 @@ class ChatBot:
         self.model = model
         self.max_len = max_len
 
-    def answer(self, questions: Union[str, List[str]], disable_progress_bar: bool = True) -> Union[str, List[str]]:
+    def answer(self, questions: Union[str, List[str]], disable_progress_bar: bool = True) -> List[str]:
         """
         Takes a question, or list of questions, whose answer/s can be found in the context used to instantiate the
         class, and returns the answer or list of answers.
@@ -37,8 +37,7 @@ class ChatBot:
         :param disable_progress_bar: bool; whether to disable the tqdm bar showing computational progress as the bot
                calculates the answers. The bar may be useful to track progress if many questions are asked.
                Default: True.
-        :return: predicted_answers: if a single question was given, this is a string with the predicted answer. If
-                 multiple questions were given, this is a list of strings with all the predicted answers in order.
+        :return: predicted_answers: A list of strings with all the predicted answers in order.
         """
         if isinstance(questions, str):
             questions = [questions]  # convert to list if a single question is given as string
@@ -56,8 +55,6 @@ class ChatBot:
             self.tokenizer.decode(input_ids[i, pred_start_i:pred_end_i + 1])
             for i, (pred_start_i, pred_end_i) in enumerate(zip(pred_start, pred_end))
         ]
-        if len(predicted_answers) == 1:
-            return predicted_answers[0]  # return answer as string instead of list if there is only one question
         return predicted_answers
 
 

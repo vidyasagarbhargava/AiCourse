@@ -1,3 +1,16 @@
+"""
+This is a sample script which could be run as is on Google Colab and will do all the training and testing.
+In order for this to work, you will need to mount your Google Drive first by doing
+
+from google.colab import drive
+drive.mount('/content/drive')
+
+and inserting your verification code when prompted. You will need to log in if you haven't already.
+You will also need to save all the modules_solutions files on your Drive and save the SQuAD jsons on a
+"/content/drive/My Drive/Colab Notebooks/" folder on your Drive. Pleas ensure directories are set up correctly before
+running. You will also need to manually set your Notebook to using a GPU accelerator, otherwise a CPU will be used.
+"""
+
 import json
 import torch
 from transformers import BertTokenizer, BertForQuestionAnswering, AdamW
