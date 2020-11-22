@@ -1,8 +1,8 @@
 from flask import Flask, request
 import json
-from MLModel import Model
+# from MLModel import Model
 
-model = Model()
+# model = Model()
 
 app = Flask(__name__)
 

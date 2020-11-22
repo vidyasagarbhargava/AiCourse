@@ -1,13 +1,28 @@
 from flask import Flask, request
 import json
-from MLModel import Model
+# from MLModel import Model
 
-model = Model()
+# model = Model()
 
-app = Flask('__name__')
+app = Flask(__name__)
+
+
+@app.route('/home')
+def home():
+    return '<html><h1>yo</h1><p>hi</p></html>'
+
 
 @app.route('/')
 def root():
+    return json.dumps({
+        'statusCode': 200,
+        'body': 'yo'
+    })
+
+@app.route('/detect', methods=['POST'])
+def detect():
+    x = request.get_json()['input']
+    print(x)
     return json.dumps({
         'statusCode': 200,
         'body': 'yo'
@@ -28,5 +43,5 @@ def predict():
     #         'message': 'Internal server error'
     #     })
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+# if __name__ == '__main__':
+app.run(host='0.0.0.0', port=5000)
