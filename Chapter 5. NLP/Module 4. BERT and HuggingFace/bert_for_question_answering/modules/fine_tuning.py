@@ -1,5 +1,5 @@
 from torch.utils.data import TensorDataset, random_split, DataLoader, RandomSampler, SequentialSampler
-from transformers import get_linear_schedule_with_warmup
+from transformers import get_linear_schedule_with_warmup, BertForQuestionAnswering
 from .utils import set_hardware_acceleration, format_time, gpu_memory_usage
 from typing import Optional, Union, Tuple, Dict
 import json
@@ -58,7 +58,7 @@ def fine_tune_train_and_eval(
         start_positions: torch.Tensor,
         end_positions: torch.Tensor,
         batch_size: Tuple[int, int],
-        model: torch.nn.Module,
+        model: Union[torch.nn.Module, BertForQuestionAnswering],
         optimizer: torch.optim.Optimizer,
         train_ratio: float = 0.9,
         training_epochs: int = 3,

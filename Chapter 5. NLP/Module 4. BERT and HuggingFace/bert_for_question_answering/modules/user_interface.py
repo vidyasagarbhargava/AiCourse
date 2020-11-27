@@ -51,9 +51,12 @@ class ChatBot:
         pred_start, pred_end = predict(
             input_ids, token_type_ids, attention_masks, self.model, 1, disable_progress_bar=disable_progress_bar
         )
-        predicted_answers = [
-            ##  create a list with all predicted answers using a list comprehension
-        ]
+
+        predicted_answers = []
+        for i, (pred_start_i, pred_end_i) in enumerate(zip(pred_start, pred_end)):
+            answer = self.tokenizer.decode(## complete here, so we get the answer back from input_ids)
+            predicted_answers.append(answer)
+
         if len(predicted_answers) == 1:
             return predicted_answers[0]  # return answer as string instead of list if there is only one question
         return predicted_answers
