@@ -148,7 +148,7 @@ def fine_tune_train_and_eval(
         logger.info(f"Epoch {epoch + 1} took {training_time} to train.")
         logger.info(f"Average training loss: {average_training_loss_per_batch}. \n Running validation.")
         if torch.cuda.is_available():
-            logger.info("GPU memory usage: \n", gpu_memory_usage())
+            logger.info(f"GPU memory usage: \n{gpu_memory_usage()}")
 
         t_i = time()
         ## set eval mode
@@ -179,7 +179,7 @@ def fine_tune_train_and_eval(
                 true_start = torch.cat((true_start, batch_start_positions))
                 true_end = torch.cat((true_end, batch_end_positions))
             if torch.cuda.is_available():
-                logger.debug("GPU memory usage: \n", gpu_memory_usage())
+                logger.debug(f"GPU memory usage: \n{gpu_memory_usage()}")
 
         total_correct_start =  ## define the number of correctly predicted start tokens
         total_correct_end =  ## define the number of correctly predicted end tokens
@@ -193,7 +193,7 @@ def fine_tune_train_and_eval(
         logger.info(f"Average validation loss: {average_validation_loss_per_batch}.")
         logger.info(f"Average validation accuracy (out of 1): {average_validation_accuracy_per_epoch}.")
         if torch.cuda.is_available():
-            logger.info("GPU memory usage: \n", gpu_memory_usage())
+            logger.info(f"GPU memory usage: \n{gpu_memory_usage()}")
 
         training_stats[f"epoch_{epoch + 1}"] = {
             "training_loss": average_training_loss_per_batch,

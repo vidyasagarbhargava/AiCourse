@@ -209,9 +209,9 @@ class DatasetEncoder:
                 mask_token_indices = is_mask_token.nonzero(as_tuple=False)
                 if len(mask_token_indices) != len(answer_tokens):
                     continue  # ignore cases where start or end of answer exceed max_len and have been truncated
-                question_start_index, question_end_index =  ## fill this line using mask_token_indices appropriately
-                possible_starts.append(question_start_index)
-                possible_ends.append(question_end_index)
+                answer_start_index, answer_end_index =  ## fill this line using mask_token_indices appropriately
+                possible_starts.append(answer_start_index)
+                possible_ends.append(answer_end_index)
                 answer_token_ids = self._tokenizer.encode(
                     possible_answer['text'],
                     add_special_tokens=False,
