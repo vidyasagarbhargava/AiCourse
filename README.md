@@ -1,3 +1,3 @@
-# AI Core's Data Science and Machine Learning Course
+# AI Core's Machine Learning Engineering Course
 
-Welcome to AI Core's DSML Course!
+Welcome to AI Core's Course!
